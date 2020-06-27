@@ -1,4 +1,4 @@
-package com.example.Party.Model;
+package com.sda.party.model;
 
 
 import lombok.Data;
