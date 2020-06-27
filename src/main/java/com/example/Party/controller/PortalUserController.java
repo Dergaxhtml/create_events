@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PortalUserController {
     @Autowired
-    PortalUserRepository portalUserRepository;
+    private PortalUserRepository portalUserRepository;
 
     @GetMapping("/home")
     public String homePage(){
