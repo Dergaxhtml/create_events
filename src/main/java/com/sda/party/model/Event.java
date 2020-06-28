@@ -2,11 +2,13 @@
 package com.sda.party.model;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "event")
@@ -18,9 +20,9 @@ public class Event {
     @Column(name = "EVT_ID")
     private int id;
 
-    @Column(name = "EVT_data")
+    @Column(name = "EVT_date")
     @NotEmpty
-    private String data;
+    private LocalDateTime eventDate;
 
     @Column(name = "EVT_address")
     @NotEmpty
@@ -28,11 +30,12 @@ public class Event {
 
     @Column(name = "EVT_access")
     @NotEmpty
-    private String access;
+    private Access access;
 
-    @Column(name = "EVT_organizator")
-    @NotEmpty
-    private String organizator;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "EVT_USR_LOGIN", referencedColumnName = "USR_login")
+    private User organizator;
+
 
 }
 

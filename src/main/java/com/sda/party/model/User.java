@@ -27,11 +27,5 @@ public class User {
     @Column(name = "USR_email")
     @Email
     private String email;
-    @Column(name = "USR_nickname")
-    @NotEmpty
-    private String nickname;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name= "portal_user_roles", joinColumns = @JoinColumn(name = "PUR_PU_ID"), inverseJoinColumns = @JoinColumn(name="PUR_RO_ID"))
-    private Set<Role> roles;
 }
