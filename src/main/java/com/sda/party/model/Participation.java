@@ -17,15 +17,16 @@ public class Participation {
     @Column(name = "PRT_ID")
     private int id;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "event",
-            joinColumns = {@JoinColumn(name = "PRT_EVT_ID")})
-    private Set<Event> events = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user",
-            joinColumns = {@JoinColumn(name = "PRT_USR_ID")})
-    private Set<User> users = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name="EVT_ID")
+    private Event event;
+
+
+    @ManyToOne
+    @JoinColumn(name="USR_ID")
+    private User user;
+
 
     @Column(name = "PRT_organizator")
     @NotEmpty

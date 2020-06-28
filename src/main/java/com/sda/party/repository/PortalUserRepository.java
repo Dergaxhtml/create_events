@@ -1,3 +1,4 @@
+/*
 package com.sda.party.repository;
 
 import com.sda.party.model.User;
@@ -8,3 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface PortalUserRepository extends JpaRepository<User,Integer> {
     User findByLogin(String s);
 }
+*/

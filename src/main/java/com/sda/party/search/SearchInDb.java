@@ -1,3 +1,4 @@
+/*
 package com.sda.party.search;
 
 import java.sql.*;
@@ -18,8 +19,8 @@ public class SearchInDb {
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
-
         }
         return theStrings ;
     }
 }
+*/

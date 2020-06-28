@@ -9,6 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "event")
@@ -19,6 +20,12 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "EVT_ID")
     private int id;
+
+    @OneToMany(mappedBy = "event")
+    private List<Participation> participant;
+
+    @OneToMany(mappedBy = "event")
+    private List<Comment> comments;
 
     @Column(name = "EVT_date")
     @NotEmpty
@@ -31,10 +38,6 @@ public class Event {
     @Column(name = "EVT_access")
     @NotEmpty
     private Access access;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "EVT_USR_LOGIN", referencedColumnName = "USR_login")
-    private User organizator;
 
 
 }
