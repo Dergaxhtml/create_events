@@ -26,6 +26,11 @@ public class PortalUserController {
         return "homepage";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/register")
     public String signUpPageBeforSave(Model model){
         model.addAttribute("portalUser", new User());
