@@ -20,9 +20,9 @@ public class Event {
     @Column(name = "EVT_ID")
     private int id;
 
-    @Column(name = "EVT_data")
+    @Column(name = "EVT_date")
     @NotEmpty
-    private LocalDateTime data;
+    private LocalDateTime eventDate;
 
     @Column(name = "EVT_address")
     @NotEmpty
