@@ -15,7 +15,7 @@ import java.util.Set;
 
 public class UserServiceDetailsImpl implements UserDetailsService {
     @Autowired
-    PortalUserRepository portalUserRepository;
+    private PortalUserRepository portalUserRepository;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {

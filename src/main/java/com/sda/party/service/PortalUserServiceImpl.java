@@ -16,29 +16,25 @@ import java.util.Set;
 public class PortalUserServiceImpl implements PortalUserService {
 
 
-        @Autowired
-        PortalUserRepository portalUserRepository;
+    @Autowired
+    private PortalUserRepository portalUserRepository;
 
-        @Autowired
-        PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-        @Autowired
-        RoleRepository roleRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
-        @Override
-        public void createNewUser(User user) {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            Set<Role> roles = new HashSet<>();
-            roles.add(roleRepository.findByName("USER"));
-            user.setRoles(roles);
-            portalUserRepository.save(user);
-        }
-
-        @Override
-        public void createNewUser(User user) {
-
-        }
+    @Override
+    public void createNewUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        Set<Role> roles = new HashSet<>();
+        roles.add(roleRepository.findByName("USER"));
+        user.setRoles(roles);
+        portalUserRepository.save(user);
     }
+
+}
 
 
 

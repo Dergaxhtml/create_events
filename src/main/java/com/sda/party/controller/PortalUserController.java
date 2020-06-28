@@ -18,7 +18,7 @@ public class PortalUserController {
     private PortalUserRepository portalUserRepository;
 
     @Autowired
-    PortalUserService portalUserService;
+    private PortalUserService portalUserService;
 
     @GetMapping("/home")
     public String homePage(){
