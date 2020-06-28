@@ -7,7 +7,7 @@ public class SearchInDb {
     private static List<String> searchInDB(String keyword) {
         List<String> theStrings = new List<String>();
         String url = "jdbc:mysql://127.0.0.1:3306/partyzone?serverTimezone=CET";
-        String query = "Select EVT_address from event where EVT_address like %?% ";
+        String query = "Select EVT_address from event where EVT_address like '%?%'" ;
         try {
             Connection connection = DriverManager.getConnection(...);
             PreparedStatement ps = connection.prepareStatement(query);
