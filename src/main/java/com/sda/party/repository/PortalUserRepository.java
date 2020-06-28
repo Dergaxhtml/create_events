@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PortalUserRepository extends JpaRepository<User,Integer> {
+    User findByLogin(String s);
 }
