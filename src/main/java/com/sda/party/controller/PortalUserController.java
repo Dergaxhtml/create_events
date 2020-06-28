@@ -27,19 +27,6 @@ public class PortalUserController {
         return "login";
     }
 
-/*    @GetMapping("/register")
-    public String signUpPageBeforSave(Model model){
-        model.addAttribute("portalUser", new User());
-        return "register";
-    }
-    @PostMapping("/register")
-    public String postAction(@Valid User portalUser, BindingResult result){
-        if (result.hasErrors()){
-            return "register";
-        }else {
-            portalUserService.createNewUser(portalUser);
-            return "redirect:/login";
-        }
-    }*/
+
 }
 
