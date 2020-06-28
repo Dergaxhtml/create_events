@@ -18,15 +18,14 @@ public class Comment {
     private int id;
 
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "event",
-            joinColumns = {@JoinColumn(name = "COMT_EVT_ID")})
-    private Set<Event> events = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name="EVT_ID")
+    private Event event;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user",
-            joinColumns = {@JoinColumn(name = "COMT_USR_ID")})
-    private Set<User> users = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name="USR_ID")
+    private User user;
 
     @Column(name = "COMT_Text")
     private String text;

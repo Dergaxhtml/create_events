@@ -1,3 +1,4 @@
+/*
 package com.sda.party.service;
 
 
@@ -38,3 +39,4 @@ public class PortalUserServiceImpl implements PortalUserService {
 
 
 
+*/

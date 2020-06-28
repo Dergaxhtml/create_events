@@ -1,6 +1,7 @@
+/*
 package com.sda.party.service;
 
-import com.sda.party.model.Role;
+
 import com.sda.party.repository.PortalUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -32,3 +33,4 @@ public class UserServiceDetailsImpl implements UserDetailsService {
         return new User(user.getLogin(),user.getPassword(),grantedAuthorities);
     }
 }
+*/

@@ -1,8 +1,9 @@
+
 package com.sda.party.controller;
 
 import com.sda.party.model.User;
-import com.sda.party.repository.PortalUserRepository;
-import com.sda.party.service.PortalUserService;
+//import com.sda.party.repository.PortalUserRepository;
+//import com.sda.party.service.PortalUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +15,6 @@ import javax.validation.Valid;
 
 @Controller
 public class PortalUserController {
-    @Autowired
-    private PortalUserRepository portalUserRepository;
-
-    @Autowired
-    private PortalUserService portalUserService;
 
     @GetMapping("/home")
     public String homePage(){
@@ -31,7 +27,7 @@ public class PortalUserController {
         return "login";
     }
 
-    @GetMapping("/register")
+/*    @GetMapping("/register")
     public String signUpPageBeforSave(Model model){
         model.addAttribute("portalUser", new User());
         return "register";
@@ -44,5 +40,6 @@ public class PortalUserController {
             portalUserService.createNewUser(portalUser);
             return "redirect:/login";
         }
-    }
+    }*/
 }
+
