@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/spring2?serverTimezone=CET
+    url: jdbc:mysql://127.0.0.1:3306/spring?serverTimezone=CET
     username: root
     password: test
     driverClassName: com.mysql.cj.jdbc.Driver
