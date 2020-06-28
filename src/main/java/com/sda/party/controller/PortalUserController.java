@@ -44,6 +44,5 @@ public class PortalUserController {
             portalUserService.createNewUser(portalUser);
             return "redirect:/login";
         }
-
     }
 }
