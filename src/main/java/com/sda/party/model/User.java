@@ -35,7 +35,14 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Comment> comments;
 
+    private String passwordConfirm;
 
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
     public int getId() {
         return id;
     }

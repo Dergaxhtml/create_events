@@ -15,23 +15,11 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PortalUserController {
-  //  @Autowired
-    //private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private UserRepository userRepository;
-
-    @RequestMapping("/home")
-    public String homePage() {
-
-        return "homepage";
-    }
-
-    @RequestMapping("/login")
-    public String login() {
-        return "login";
-    }
-
 
     @RequestMapping("/register")
     public String register(Model model) {
@@ -49,7 +37,7 @@ public class PortalUserController {
         User user1 = new User();
         user1.setLogin(user.getLogin());
         user1.setEmail(user.getEmail());
-        user1.setPassword(user.getPassword());
+        user1.setPassword(passwordEncoder.encode(user.getPassword()));
 
         userRepository.save(user1);
 
