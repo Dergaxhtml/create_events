@@ -21,17 +21,6 @@ public class PortalUserController {
     @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping("/home")
-    public String homePage() {
-
-        return "homepage";
-    }
-
-    @RequestMapping("/login")
-    public String login() {
-        return "login";
-    }
-
 
     @RequestMapping("/register")
     public String register(Model model) {
