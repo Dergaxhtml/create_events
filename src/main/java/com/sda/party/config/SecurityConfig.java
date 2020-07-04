@@ -51,8 +51,8 @@ import org.springframework.validation.Validator;
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .authorizeRequests()
-                    .antMatchers("/home", "/register", "/login").permitAll() // strony dostepne bez logowania
-                    //.antMatchers("/home").authenticated() // strony z koniecznym logowaniem
+                    .antMatchers("/home", "/register", "/login").permitAll()
+                    .antMatchers("/event").authenticated()
                     .and().formLogin()
                     .loginPage("/login")
                     .defaultSuccessUrl("/home")
