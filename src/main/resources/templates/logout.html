@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>MeetDown</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="css/homepage.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+<div th:replace="homepage :: homepage"></div>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home">MeetDown</a>
+        </div>
+        <ul class="nav navbar-nav navbar-left">
+            <li class="nav-item">
+                <a>Hello!</a>
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/logout"><span
+                    class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+</nav>
+<div class="w3-container">
+
+</div>
+</body>
+</html>
