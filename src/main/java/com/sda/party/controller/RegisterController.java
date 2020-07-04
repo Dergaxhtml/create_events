@@ -14,7 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class PortalUserController {
+public class RegisterController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
