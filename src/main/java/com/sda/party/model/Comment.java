@@ -17,11 +17,9 @@ public class Comment {
     @Column(name = "COMT_ID")
     private int id;
 
-
     @ManyToOne
     @JoinColumn(name="EVT_ID")
     private Event event;
-
 
     @ManyToOne
     @JoinColumn(name="USR_ID")
