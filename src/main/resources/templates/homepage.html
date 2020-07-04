@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity4">
+
 <head>
     <title>MeetDown</title>
     <meta charset="utf-8">
@@ -20,12 +21,15 @@
             <a class="navbar-brand" href="/home">MeetDown</a>
         </div>
         <ul class="nav navbar-nav navbar-left">
-            <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li class="nav-item" sec:authorize="isAnonymous()"><a href="/register"><span
+                    class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li class="nav-item" sec:authorize="isAnonymous()"><a href="/login"><span
+                    class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
         </ul>
         <div class="search-container">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit">Submit</button>
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit">Submit</button>
         </div>
     </div>
 </nav>
@@ -42,22 +46,6 @@
         </div>
         <div class="column">
             <div class="w3-card-4" style="width:50%;text-align:center">
-                <img src="https://www.w3schools.com/W3CSS/img_snowtops.jpg" alt="Alps" style="width:100%;">                <div class="w3-container w3-center">
-                    <p>The Italian / Austrian Alps</p>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="w3-card-4" style="width:50%;text-align:center">
-                <img src="https://www.w3schools.com/W3CSS/img_snowtops.jpg" alt="Alps" style="width:100%;">                <div class="w3-container w3-center">
-                    <p>The Italian / Austrian Alps</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <div class="w3-card-4" style="width:50%;text-align:center">
                 <img src="https://www.w3schools.com/W3CSS/img_snowtops.jpg" alt="Alps" style="width:100%;">
                 <div class="w3-container w3-center">
                     <p>The Italian / Austrian Alps</p>
@@ -66,39 +54,8 @@
         </div>
         <div class="column">
             <div class="w3-card-4" style="width:50%;text-align:center">
-                <img src="https://www.w3schools.com/W3CSS/img_snowtops.jpg" alt="Alps" style="width:100%;">                <div class="w3-container w3-center">
-                    <p>The Italian / Austrian Alps</p>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="w3-card-4" style="width:50%;text-align:center">
                 <img src="https://www.w3schools.com/W3CSS/img_snowtops.jpg" alt="Alps" style="width:100%;">
                 <div class="w3-container w3-center">
-                    <p>The Italian / Austrian Alps</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <div class="w3-card-4" style="width:50%;text-align:center">
-                <img src="https://www.w3schools.com/W3CSS/img_snowtops.jpg" alt="Alps" style="width:100%;">                <div class="w3-container w3-center">
-                    <p>The Italian / Austrian Alps</p>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="w3-card-4" style="width:50%;text-align:center">
-                <img src="https://www.w3schools.com/W3CSS/img_snowtops.jpg" alt="Alps" style="width:100%;">
-                <div class="w3-container w3-center">
-                    <p>The Italian / Austrian Alps</p>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="w3-card-4" style="width:50%;text-align:center">
-                <img src="https://www.w3schools.com/W3CSS/img_snowtops.jpg" alt="Alps" style="width:100%;">                <div class="w3-container w3-center">
                     <p>The Italian / Austrian Alps</p>
                 </div>
             </div>
