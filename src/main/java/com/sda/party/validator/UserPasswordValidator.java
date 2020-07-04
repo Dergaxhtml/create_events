@@ -23,9 +23,9 @@ public class UserPasswordValidator implements Validator {
             errors.rejectValue("passwordConfirm", "valid.passwordConfirmDiff");
         }
 
-        String firstName = user.getLogin();
-        if (firstName.length() < 3 || firstName.length() > 25) {
-            errors.rejectValue("firstName", "valid.firstNameLength");
+        String login = user.getLogin();
+        if (login.length() < 3 || login.length() > 25) {
+            errors.rejectValue("login", "valid.loginLength");
         }
     }
 }
