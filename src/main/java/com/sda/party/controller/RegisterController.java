@@ -21,7 +21,7 @@ public class RegisterController {
     @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping("/event")
+    @RequestMapping("/register")
     public String register(Model model) {
         model.addAttribute("user", new User());
         return "register";

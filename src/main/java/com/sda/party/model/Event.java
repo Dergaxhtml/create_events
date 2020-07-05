@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class Event {
     @NotEmpty
     private String name;
 
-    @Column
+    @Column(name = "EVT_city")
     @NotEmpty
     private String city;
 
@@ -35,15 +36,15 @@ public class Event {
 //
 //    @OneToMany(mappedBy = "event")
 //    private List<Comment> comments;
-//
-//    @Column(name = "EVT_date")
-//    @NotEmpty
-//    private LocalDateTime eventDate;
-//
-//    @Column(name = "EVT_address")
-//    @NotEmpty
-//    private String address;
-//
+
+    @Column(name = "EVT_date")
+    @NotEmpty
+    private LocalDate eventDate;
+
+    @Column(name = "EVT_address")
+    @NotEmpty
+    private String address;
+
 //    @Column(name = "EVT_access")
 //    @NotEmpty
 //    private Access access;
@@ -64,5 +65,28 @@ public class Event {
         this.city = city;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalDate getEventDate() {
+        return eventDate;
+    }
+
+    public void setEventDate(LocalDate eventDate) {
+        this.eventDate = eventDate;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }
 
