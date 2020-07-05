@@ -32,7 +32,7 @@
                     </span> Login</a>
             </li>
             <li class="nav-item" sec:authorize="isAuthenticated()">
-                <a href="/login" th:href="@{/login}">
+                <a href="/logout" th:href="@{/logout}">
                     <span class="glyphicon glyphicon-log-out" aria-hidden="true">
                     </span> Logout</a>
                 <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
