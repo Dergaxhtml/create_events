@@ -1,8 +1,11 @@
 package com.sda.party.controller;
 
 import com.sda.party.dto.EventDto;
+import com.sda.party.email.SendEmail;
 import com.sda.party.model.Event;
+import com.sda.party.model.User;
 import com.sda.party.repository.EventRepository;
+import com.sda.party.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,16 +15,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.mail.MessagingException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+
+
+import java.util.List;
 
 @Controller
 public class EventController {
 
     @Autowired
     private EventRepository eventRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @RequestMapping("/event")
     public String event(Model model) {
@@ -31,7 +42,7 @@ public class EventController {
     }
 
     @RequestMapping(value = "/event", method = RequestMethod.POST)
-    public String event(@ModelAttribute("event") @Validated EventDto event, BindingResult bindingResult) {
+    public String event(@ModelAttribute("event") @Validated EventDto event, BindingResult bindingResult) throws MessagingException {
 
 
         if (bindingResult.hasErrors()) {
@@ -48,7 +59,7 @@ public class EventController {
         }
         LocalDate date = LocalDate.parse(event.getEventDate(), formatter);
 
-        
+
         Event newEvent = new Event();
         newEvent.setName(event.getName());
         newEvent.setCity(event.getCity());
@@ -58,6 +69,11 @@ public class EventController {
 
         eventRepository.save(newEvent);
 
-        return "redirect:/home";
+        List<User> list = userRepository.findAll();
+        SendEmail sender = new SendEmail();
+        sender.sendEmail(list);
+
+
+        return "redirect:/event";
     }
 }

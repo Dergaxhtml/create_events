@@ -90,6 +90,14 @@
             <artifactId>thymeleaf-spring5</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>
