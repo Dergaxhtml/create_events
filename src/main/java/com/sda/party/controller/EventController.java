@@ -25,13 +25,13 @@ public class EventController {
 
     @RequestMapping("/event")
     public String event(Model model) {
-feature/eventDatabaseSender
+
         model.addAttribute("event", new EventDto());
         return "event";
     }
 
     @RequestMapping(value = "/event", method = RequestMethod.POST)
- feature/eventDatabaseSender
+    public String event(@ModelAttribute("event") @Validated EventDto event, BindingResult bindingResult) {
 
 
         if (bindingResult.hasErrors()) {
