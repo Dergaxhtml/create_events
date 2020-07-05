@@ -37,6 +37,16 @@ public class User {
 
     private String passwordConfirm;
 
+    public User(){
+
+    }
+
+    public User(int id, String  login, String password, String email){
+        this.id=id;
+        this.login=login;
+        this.password=password;
+        this.email=email;
+    }
     public String getPasswordConfirm() {
         return passwordConfirm;
     }
