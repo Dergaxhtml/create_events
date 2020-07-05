@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>EVENT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
 
     <link href="css/event.css" rel="stylesheet" type="text/css" media="all" />
 
@@ -17,9 +22,15 @@
     <h1>Create Event</h1>
     <div class="main-agileinfo">
         <div class="agileits-top">
-            <form action="#" method="post">
-                <input class="text" type="text" name="Name" placeholder="Name" required="">
-                <input class="text" type="text" name="City" placeholder="City" required="">
+            <form th:action="@{/event}" th:object="${event}" method="post">
+                <input class="text" type="text" name="Name" placeholder="Name" th:field="*{name}" required="true" >
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"> Name Error</span>
+                <input class="text" type="text" name="City" placeholder="City" th:field="*{city}" required="true">
+                <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="text-danger"> City Error</span>
+                <input class="text" type="text" name="Address" placeholder="Address" th:field="*{address}" required="true" >
+                <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"> Address Error</span>
+                <input class="date" type="date" name="EventDate" placeholder="Event Date" th:field="*{eventDate}" required="true" >
+                <span th:if="${#fields.hasErrors('eventDate')}" th:errors="*{eventDate}" class="text-danger"> Event Date Error</span>
                 <div class="wthree-text">
 
                     <div class="clear"> </div>
