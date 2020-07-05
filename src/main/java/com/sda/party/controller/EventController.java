@@ -42,7 +42,7 @@ public class EventController {
     }
 
     @RequestMapping(value = "/event", method = RequestMethod.POST)
-    public String event(@ModelAttribute("event") @Validated EventDto event, BindingResult bindingResult) throws MessagingException {
+    public String event(@ModelAttribute("event") @Validated EventDto event, BindingResult bindingResult) {
 
 
         if (bindingResult.hasErrors()) {
@@ -59,7 +59,7 @@ public class EventController {
         }
         LocalDate date = LocalDate.parse(event.getEventDate(), formatter);
 
-        
+
         Event newEvent = new Event();
         newEvent.setName(event.getName());
         newEvent.setCity(event.getCity());

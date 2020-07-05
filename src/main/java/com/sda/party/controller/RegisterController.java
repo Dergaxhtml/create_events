@@ -29,6 +29,7 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
+
     public String register(@ModelAttribute("user") @Validated UserDto user, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
