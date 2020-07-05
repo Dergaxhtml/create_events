@@ -42,7 +42,7 @@ public class EventController {
     }
 
     @RequestMapping(value = "/event", method = RequestMethod.POST)
-    public String event(@ModelAttribute("event") @Validated EventDto event, BindingResult bindingResult) {
+    public String event(@ModelAttribute("event") @Validated EventDto event, BindingResult bindingResult) throws MessagingException {
 
 
         if (bindingResult.hasErrors()) {
