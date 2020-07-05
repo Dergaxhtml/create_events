@@ -25,12 +25,14 @@ public class EventController {
 
     @RequestMapping("/event")
     public String event(Model model) {
+feature/eventDatabaseSender
         model.addAttribute("event", new EventDto());
         return "event";
     }
 
     @RequestMapping(value = "/event", method = RequestMethod.POST)
-    public String event(@ModelAttribute("event") @Validated EventDto event, BindingResult bindingResult) {
+ feature/eventDatabaseSender
+
 
         if (bindingResult.hasErrors()) {
             return "event";
@@ -50,6 +52,7 @@ public class EventController {
         Event newEvent = new Event();
         newEvent.setName(event.getName());
         newEvent.setCity(event.getCity());
+
         newEvent.setAddress(event.getAddress());
         newEvent.setEventDate(date);
 
