@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
@@ -38,9 +40,18 @@ public class EventController {
         if (bindingResult.hasErrors()) {
             return "event";
         }
+
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        try {
+            LocalDate date = LocalDate.parse(event.getEventDate(), formatter);
+        } catch (DateTimeException e) {
+            return "event";
+        }
         LocalDate date = LocalDate.parse(event.getEventDate(), formatter);
 
+        
         Event newEvent = new Event();
         newEvent.setName(event.getName());
         newEvent.setCity(event.getCity());
