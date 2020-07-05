@@ -58,6 +58,6 @@ public class EventController {
 
         eventRepository.save(newEvent);
 
-        return "redirect:/event";
+        return "redirect:/home";
     }
 }
