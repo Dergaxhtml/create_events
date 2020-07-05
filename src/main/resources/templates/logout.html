@@ -14,26 +14,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
 <div th:replace="homepage :: homepage"></div>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/home">MeetDown</a>
-        </div>
-        <ul class="nav navbar-nav navbar-left">
-            <li class="nav-item">
-                <a>Hello!</a>
-            </li>
-            <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/logout"><span
-                    class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-        </ul>
-        <div class="search-container">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit">Submit</button>
-        </div>
-    </div>
-</nav>
-<div class="w3-container">
+<div th:insert="fragments/navbar :: navbar"></div>
 
+
+<div class="w3-container">
+Zostałeś wylogowany
 </div>
 </body>
 </html>
