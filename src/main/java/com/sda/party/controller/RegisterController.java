@@ -1,6 +1,7 @@
 
 package com.sda.party.controller;
 
+import com.sda.party.dto.UserDto;
 import com.sda.party.model.User;
 //import com.sda.party.repository.PortalUserRepository;
 //import com.sda.party.service.PortalUserService;
@@ -23,12 +24,13 @@ public class RegisterController {
 
     @RequestMapping("/register")
     public String register(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new UserDto());
         return "register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@ModelAttribute("user") @Validated User user, BindingResult bindingResult) {
+
+    public String register(@ModelAttribute("user") @Validated UserDto user, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
             return "register";

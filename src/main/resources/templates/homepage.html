@@ -16,6 +16,23 @@
 <body>
 <div th:insert="fragments/navbar :: navbar"></div>
 
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home">MeetDown</a>
+        </div>
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="/event"><span class="glyphicon glyphicon-create-event"></span> Create Event</a></li>
+        </ul>
+        <div class="search-container">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit">Submit</button>
+        </div>
+    </div>
+</nav>
+
 <div class="w3-container">
 
     <div class="row">
