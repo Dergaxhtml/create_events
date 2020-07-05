@@ -21,14 +21,14 @@ public class RegisterController {
     @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping("/register")
+    @RequestMapping("/event")
     public String register(Model model) {
         model.addAttribute("user", new User());
         return "register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@ModelAttribute("user") @Validated User user, BindingResult bindingResult, Model model) {
+    public String register(@ModelAttribute("user") @Validated User user, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "register";
