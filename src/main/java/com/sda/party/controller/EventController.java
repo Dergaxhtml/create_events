@@ -2,7 +2,6 @@ package com.sda.party.controller;
 
 import com.sda.party.dto.EventDto;
 import com.sda.party.model.Event;
-import com.sda.party.model.User;
 import com.sda.party.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,12 +29,14 @@ public class EventController {
 
     @RequestMapping("/event")
     public String event(Model model) {
+
         model.addAttribute("event", new EventDto());
         return "event";
     }
 
     @RequestMapping(value = "/event", method = RequestMethod.POST)
     public String event(@ModelAttribute("event") @Validated EventDto event, BindingResult bindingResult) {
+
 
         if (bindingResult.hasErrors()) {
             return "event";
