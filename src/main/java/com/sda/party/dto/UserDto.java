@@ -1,48 +1,29 @@
-package com.sda.party.model;
+package com.sda.party.dto;
 
-
-import lombok.Data;
+import com.sda.party.model.Comment;
+import com.sda.party.model.Participation;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.List;
-import java.util.Set;
 
-@Entity
-@Table(name = "user")
-@Data
-public class User {
+public class UserDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "USR_ID")
     private int id;
-    @Column(name = "USR_login")
-    @NotEmpty
+
     private String login;
-    @Column(name = "USR_password")
-    @Size(min=8)
+
     private String password;
-    @Column(name = "USR_email")
-    @Email
+
     private String email;
 
-    @OneToMany(mappedBy = "user")
+
     private List<Participation> participant;
 
-    @OneToMany(mappedBy = "user")
+
     private List<Comment> comments;
-
-    private String passwordConfirm;
-
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
 
     public int getId() {
         return id;
