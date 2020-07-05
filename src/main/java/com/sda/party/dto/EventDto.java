@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
-public class EventDTO {
+public class EventDto {
 
     private int id;
     private String name;
