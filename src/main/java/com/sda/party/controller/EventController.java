@@ -55,6 +55,7 @@ public class EventController {
         Event newEvent = new Event();
         newEvent.setName(event.getName());
         newEvent.setCity(event.getCity());
+
         newEvent.setAddress(event.getAddress());
         newEvent.setEventDate(date);
 
