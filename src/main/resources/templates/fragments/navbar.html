@@ -32,6 +32,11 @@
                     </span> Login</a>
             </li>
             <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a>
+                    <span class="glyphicon glyphicon-user" aria-hidden="true">
+                    </span> Welcome, <span  sec:authentication="name">Username</span></a>
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
                 <a href="/logout" th:href="@{/logout}">
                     <span class="glyphicon glyphicon-log-out" aria-hidden="true">
                     </span> Logout</a>
