@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Events</title>
 </head>
 <body>
-
+<div class="col" >
+    <h3>Zadania</h3>
+    <table class="eventTable" id="todos-table">
+        <tbody>
+        <tr th:each="event: ${events}">
+            <td><input type="hidden" th:value="${event.id}" />            </td>
+            <td class="event-name" th:text="${event.name}" />
+            <td class="event-name" th:text="${event.city}" />
+<!--            <td class="event-name" th:text="${event.eventDate}" />-->
+            <td class="event-name" th:text="${event.address}" />
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
