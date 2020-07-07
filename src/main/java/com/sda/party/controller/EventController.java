@@ -22,7 +22,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
-
 import java.util.List;
 
 @Controller
@@ -34,14 +33,14 @@ public class EventController {
     @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping("/event")
+    @RequestMapping("/events/event")
     public String event(Model model) {
 
         model.addAttribute("event", new EventDto());
         return "event";
     }
 
-    @RequestMapping(value = "/event", method = RequestMethod.POST)
+    @RequestMapping(value = "events/event", method = RequestMethod.POST)
     public String event(@ModelAttribute("event") @Validated EventDto event, BindingResult bindingResult) throws MessagingException {
 
 
@@ -75,5 +74,15 @@ public class EventController {
 
 
         return "redirect:/event";
+    }
+
+    @RequestMapping("/events")
+    public String events(Model model) {
+
+        List<Event> eventsAll = eventRepository.findAll();
+
+        model.addAttribute(eventsAll);
+
+        return "events";
     }
 }
