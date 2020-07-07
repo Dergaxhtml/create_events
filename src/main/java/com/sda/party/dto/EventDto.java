@@ -54,4 +54,11 @@ public class EventDto {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public EventDto(String name) {
+        this.name = name;
+    }
+    public EventDto(){
+
+    }
 }

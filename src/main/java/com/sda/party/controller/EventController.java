@@ -2,6 +2,7 @@ package com.sda.party.controller;
 
 import com.sda.party.dto.EventDto;
 import com.sda.party.email.SendEmail;
+import com.sda.party.mapper.EventMapper;
 import com.sda.party.model.Event;
 import com.sda.party.model.User;
 import com.sda.party.repository.EventRepository;
@@ -22,7 +23,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
-
 import java.util.List;
 
 @Controller
@@ -34,14 +34,14 @@ public class EventController {
     @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping("/event")
+    @RequestMapping("event")
     public String event(Model model) {
 
         model.addAttribute("event", new EventDto());
         return "event";
     }
 
-    @RequestMapping(value = "/event", method = RequestMethod.POST)
+    @RequestMapping(value = "event", method = RequestMethod.POST)
     public String event(@ModelAttribute("event") @Validated EventDto event, BindingResult bindingResult) throws MessagingException {
 
 
@@ -75,5 +75,17 @@ public class EventController {
 
 
         return "redirect:/event";
+    }
+
+    @RequestMapping("/events")
+    public String eventsShowAll(Model model) {
+
+        List<Event> events = eventRepository.findAll();
+
+        List<EventDto> dtos = EventMapper.mapEntityToDto(events);
+
+        model.addAttribute("events",dtos);
+
+        return "events";
     }
 }
