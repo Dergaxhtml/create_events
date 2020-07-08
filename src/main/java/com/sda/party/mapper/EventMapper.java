@@ -13,7 +13,8 @@ public class EventMapper {
 
         EventDto dto = new EventDto(entity.getName());
         dto.setId(entity.getId());
-
+        dto.setCity(entity.getCity());
+        dto.setAddress(entity.getAddress());
 //        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 //
 //        dto.setEventDate(dateFormat.format(entity.getEventDate()));
