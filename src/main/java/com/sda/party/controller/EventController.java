@@ -50,14 +50,10 @@ public class EventController {
         }
 
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-        try {
-            LocalDate date = LocalDate.parse(event.getEventDate(), formatter);
-        } catch (DateTimeException e) {
-            return "event";
-        }
-        LocalDate date = LocalDate.parse(event.getEventDate(), formatter);
+
+
 
 
         Event newEvent = new Event();
@@ -65,7 +61,14 @@ public class EventController {
         newEvent.setCity(event.getCity());
 
         newEvent.setAddress(event.getAddress());
-        newEvent.setEventDate(date);
+        try {
+            // LocalDate date = LocalDate.parse(event.getEventDate(), formatter);
+            LocalDateTime date = LocalDateTime.parse(event.getEventDate(),formatter);
+            newEvent.setEventDate(date);
+        } catch (DateTimeException e) {
+            return "event";
+        }
+
 
         eventRepository.save(newEvent);
 

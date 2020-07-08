@@ -39,7 +39,7 @@ public class Event {
 
     @Column(name = "EVT_date")
     @NotEmpty
-    private LocalDate eventDate;
+    private LocalDateTime eventDate;
 
     @Column(name = "EVT_address")
     @NotEmpty
@@ -73,11 +73,11 @@ public class Event {
         this.id = id;
     }
 
-    public LocalDate getEventDate() {
+    public LocalDateTime getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(LocalDate eventDate) {
+    public void setEventDate(LocalDateTime eventDate) {
         this.eventDate = eventDate;
     }
 

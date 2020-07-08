@@ -1,11 +1,6 @@
 package com.sda.party.dto;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
-import java.time.LocalDateTime;
+import java.time.temporal.TemporalAccessor;
 
 public class EventDto {
 
@@ -42,6 +37,8 @@ public class EventDto {
     public String getEventDate() {
         return eventDate;
     }
+
+
 
     public void setEventDate(String eventDate) {
         this.eventDate = eventDate;

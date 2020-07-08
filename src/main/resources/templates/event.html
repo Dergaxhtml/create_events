@@ -31,7 +31,7 @@
                 <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="text-danger"> City Error</span>
                 <input class="text" type="text" name="Address" placeholder="Address" th:field="*{address}" required="true" >
                 <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"> Address Error</span>
-                <input class="date" type="date" name="EventDate" placeholder="Event Date" th:field="*{eventDate}" required="true" >
+                <input class="date" type="datetime-local" name="EventDate" placeholder="Event Date" th:field="*{eventDate}" required="true" >
                 <span th:if="${#fields.hasErrors('eventDate')}" th:errors="*{eventDate}" class="text-danger"> Event Date Error</span>
                 <div class="wthree-text">
 
