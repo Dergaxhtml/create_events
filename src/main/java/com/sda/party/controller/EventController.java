@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.mail.MessagingException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
@@ -49,30 +48,25 @@ public class EventController {
             return "event";
         }
 
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-        try {
-            LocalDate date = LocalDate.parse(event.getEventDate(), formatter);
-        } catch (DateTimeException e) {
-            return "event";
-        }
-        LocalDate date = LocalDate.parse(event.getEventDate(), formatter);
-
 
         Event newEvent = new Event();
         newEvent.setName(event.getName());
         newEvent.setCity(event.getCity());
 
         newEvent.setAddress(event.getAddress());
-        newEvent.setEventDate(date);
+        try {
+            LocalDate date = LocalDate.parse(event.getEventDate(), formatter);
+            newEvent.setEventDate(date);
+        } catch (DateTimeException e) {
+            return "event";
+        }
 
         eventRepository.save(newEvent);
 
         List<User> list = userRepository.findAll();
         SendEmail sender = new SendEmail();
         sender.sendEmail(list);
-
 
         return "redirect:/event";
     }
