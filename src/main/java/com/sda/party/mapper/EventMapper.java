@@ -31,4 +31,13 @@ public class EventMapper {
 
         return dtos;
     }
+
+    public static EventDto mapEntityToDto(int id) {
+
+        EventDto dto = new EventDto();
+        dto.setId(id);
+
+
+        return dto;
+    }
 }
