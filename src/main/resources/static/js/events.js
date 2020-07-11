@@ -9,16 +9,9 @@ function addRowHandlers() {
                 return function() {
                     var cell = row.getElementsByTagName("td")[0];
                     var id = cell.innerHTML;
-                    $.ajax({
-                        type: 'GET',
-                        url: "/event/"+id,
-                        success: function (data) {
-                            window.location.href = data.redirecturl;
-                        },
-                        error: function () {
-                            alert('error happened');
-                        }
-                    });
+
+                    window.location.href = "/event/" + id;
+
 
                 }
             };

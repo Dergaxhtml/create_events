@@ -83,18 +83,18 @@ public class EventController {
         return "events";
     }
 
-    @ResponseBody
-    @RequestMapping(value = "events/{id}", method = RequestMethod.POST)
-    public ResponseEntity<?> showRowFromDBById(@PathVariable("id") int id, Model model){
+
+    @RequestMapping(value = "/event/{id}", method = RequestMethod.GET)
+    public String showRowFromDBById(@PathVariable("id") int id, Model model){
 
 
-        Event event = eventRepository.getById(id);
+//        Event event = eventRepository.getById(id);
+//
+//        EventDto dto = EventMapper.mapEntityToDto(event);
+//
+//        model.addAttribute("event",dto);
 
-        EventDto dto = EventMapper.mapEntityToDto(event);
 
-        model.addAttribute("events",dto);
-
-
-        return ResponseEntity.ok(dto);
+        return "eventId";
     }
 }
