@@ -85,15 +85,16 @@ public class EventController {
 
     @ResponseBody
     @RequestMapping(value = "events/{id}", method = RequestMethod.POST)
-    public ResponseEntity<?> showRowFromDBById(@PathVariable("id") int id){
+    public ResponseEntity<?> showRowFromDBById(@PathVariable("id") int id, Model model){
 
 
         Event event = eventRepository.getById(id);
 
-        EventDto dto = EventMapper.mapEntityToDto(id);
+        EventDto dto = EventMapper.mapEntityToDto(event);
+
+        model.addAttribute("events",dto);
 
 
-
-return ResponseEntity.ok(dto);
+        return ResponseEntity.ok(dto);
     }
 }
