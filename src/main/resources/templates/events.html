@@ -3,18 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Events</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="css/events.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
 </head>
 <body>
-<div class="col" >
+<div th:insert="fragments/navbar :: navbar"></div>
+<div class="col">
     <h3>Events</h3>
     <table class="eventTable" id="events-table">
+
+        <th>Name</th>
+        <th>City</th>
+        <th>Date</th>
+        <th>Address</th>
         <tbody>
         <tr th:each="event: ${events}">
-            <td><input type="hidden" th:value="${event.id}" />            </td>
-            <td class="event-name" th:text="${event.name}" /></td>
-            <td class="event-city" th:text="${event.city}" /></td>
-        <td class="event-date" type="date" th:text="${event.eventDate}" /></td>
-            <td class="event-address" th:text="${event.address}" /></td>
+            <!--<td><input type="hidden" th:value="${event.id}"/></td>-->
+            <td class="event-name" th:text="${event.name}"></td>
+            </td>
+            <td class="event-city" th:text="${event.city}"></td>
+            </td>
+            <td class="event-date" type="date" th:text="${event.eventDate}"></td>
+            </td>
+            <td class="event-address" th:text="${event.address}"></td>
+            </td>
         </tr>
         </tbody>
     </table>
