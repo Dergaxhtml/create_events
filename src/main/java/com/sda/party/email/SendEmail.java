@@ -62,8 +62,9 @@ public class SendEmail {
             message.setText("New event "
             +newEvent.getName()+" in "
             +newEvent.getCity()+" on "
-            +newEvent.getAddress()+ " has been created in "
-            +newEvent.getEventDate()+" !");
+            +newEvent.getAddress()+ " on date "
+            +newEvent.getEventDate()+" by "
+            +user.getLogin()+"!");
 
             Transport.send(message);
             System.out.println("Sent message successfully....");
