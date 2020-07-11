@@ -20,8 +20,6 @@ import javax.mail.MessagingException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
-
 import java.util.List;
 
 @Controller
@@ -68,18 +66,7 @@ public class EventController {
         SendEmail sender = new SendEmail();
         sender.sendEmail(list,newEvent);
 
-        return "redirect:/event";
+        return "redirect:/home";
     }
 
-    @RequestMapping("/events")
-    public String eventsShowAll(Model model) {
-
-        List<Event> events = eventRepository.findAll();
-
-        List<EventDto> dtos = EventMapper.mapEntityToDto(events);
-
-        model.addAttribute("events",dtos);
-
-        return "events";
-    }
 }
