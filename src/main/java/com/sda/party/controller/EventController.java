@@ -66,7 +66,7 @@ public class EventController {
 
         List<User> list = userRepository.findAll();
         SendEmail sender = new SendEmail();
-        sender.sendEmail(list);
+        sender.sendEmail(list,newEvent);
 
         return "redirect:/event";
     }

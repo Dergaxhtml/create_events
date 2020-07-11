@@ -1,5 +1,7 @@
 package com.sda.party.email;
 
+
+import com.sda.party.model.Event;
 import com.sda.party.model.User;
 
 import java.sql.Connection;
@@ -23,9 +25,11 @@ import javax.mail.internet.MimeMessage;
 
 public class SendEmail {
 
-private Session session;
+    private Session session;
 
-   private String from = "kanapka202006@wp.pl";
+    private String from = "kanapka202006@wp.pl";
+
+
     public void init() {
 
         Properties props = new Properties();
@@ -40,33 +44,39 @@ private Session session;
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(from, "Kanapka1234!");
                     }
-                });}
-        public void sendEmail(User user){
-            init();
-            try {
+                });
+    }
 
-                MimeMessage message = new MimeMessage(session);
+    public void sendEmail(User user,Event newEvent) {
+        init();
+        try {
 
-                message.setFrom(new InternetAddress(from));
+            MimeMessage message = new MimeMessage(session);
 
-                message.setRecipients(Message.RecipientType.TO,
-                        InternetAddress.parse(user.getEmail()));
-                message.setSubject("This is the Subject Line!");
+            message.setFrom(new InternetAddress(from));
 
-                message.setText("This is actual message");
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(user.getEmail()));
+            message.setSubject("New Event has been created");
 
-                Transport.send(message);
-                System.out.println("Sent message successfully....");
-            } catch (MessagingException mex) {
-                mex.printStackTrace();
-            }
+            message.setText("New event "
+            +newEvent.getName()+" in "
+            +newEvent.getCity()+" on "
+            +newEvent.getAddress()+ " has been created in "
+            +newEvent.getEventDate()+" !");
+
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
         }
+    }
 
-    public void sendEmail(List<User> users) throws MessagingException{
+    public void sendEmail(List<User> users,Event newEvent) throws MessagingException {
         for (User user : users) {
-            sendEmail(user);
+            sendEmail(user, newEvent);
         }
     }
-    }
+}
 
 
