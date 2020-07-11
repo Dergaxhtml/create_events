@@ -8,6 +8,10 @@
 <div class="col" >
     <h3>Events</h3>
     <table class="eventTable" id="events-table">
+        <th>Name</th>
+        <th>City</th>
+        <th>Date</th>
+        <th>Address</th>
         <tbody>
         <tr th:each="event: ${events}"  >
             <td th:text="${event.id}" style="display:none;" />            </td>
