@@ -1,0 +1,37 @@
+body {
+    background-image: url("https://images.pexels.com/photos/6337/light-coffee-pen-working.jpg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table tr{
+    background: rgba(255,255,255,0.7);
+}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #282828;
+    color: white;
+}
+h3 {
+    text-align: center;
+}

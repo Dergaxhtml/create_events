@@ -1,25 +1,29 @@
-{
-    box-sizing: border-box;
+body {
+    background-image: url("https://images.pexels.com/photos/6337/light-coffee-pen-working.jpg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-.column {
-    float: left;
-    width: 33.33%;
-    padding: 5px;
 
-}
-
-.row::after {
-    content: "";
-    clear: both;
-    display: table;
-
-}
-.w3-card-4 {
-    margin: auto;
-    float: none;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
+.buttondiv {
+    border: none;
+    color: black;
+    padding: 20px 40px;
     text-align: center;
-    background-color: #f1f1f1;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    cursor: pointer;
+    background: rgba(50, 99, 156,0.7);
+    opacity: 0.6;
+    transition: 0.3s;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
+.buttondiv:hover {opacity: 1}
+
