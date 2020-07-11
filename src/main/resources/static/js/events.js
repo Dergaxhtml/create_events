@@ -12,13 +12,10 @@ function addRowHandlers() {
 
                     window.location.href = "/event/" + id;
 
-
                 }
             };
         currentRow.onclick = createClickHandler(currentRow);
     };
-
-
 }
 window.onload = addRowHandlers();
 
