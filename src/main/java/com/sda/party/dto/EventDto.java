@@ -58,6 +58,9 @@ public class EventDto {
     public EventDto(String name) {
         this.name = name;
     }
+    public EventDto(int id) {
+        this.id = id;
+    }
     public EventDto(){
 
     }

@@ -8,18 +8,17 @@ import com.sda.party.model.User;
 import com.sda.party.repository.EventRepository;
 import com.sda.party.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
@@ -49,30 +48,25 @@ public class EventController {
             return "event";
         }
 
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-        try {
-            LocalDate date = LocalDate.parse(event.getEventDate(), formatter);
-        } catch (DateTimeException e) {
-            return "event";
-        }
-        LocalDate date = LocalDate.parse(event.getEventDate(), formatter);
-
 
         Event newEvent = new Event();
         newEvent.setName(event.getName());
         newEvent.setCity(event.getCity());
 
         newEvent.setAddress(event.getAddress());
-        newEvent.setEventDate(date);
+        try {
+            LocalDate date = LocalDate.parse(event.getEventDate(), formatter);
+            newEvent.setEventDate(date);
+        } catch (DateTimeException e) {
+            return "event";
+        }
 
         eventRepository.save(newEvent);
 
         List<User> list = userRepository.findAll();
         SendEmail sender = new SendEmail();
         sender.sendEmail(list);
-
 
         return "redirect:/event";
     }
@@ -87,5 +81,20 @@ public class EventController {
         model.addAttribute("events",dtos);
 
         return "events";
+    }
+
+
+    @RequestMapping(value = "/event/{id}", method = RequestMethod.GET)
+    public String showRowFromDBById(@PathVariable("id") int id, Model model){
+
+
+//        Event event = eventRepository.getById(id);
+//
+//        EventDto dto = EventMapper.mapEntityToDto(event);
+//
+//        model.addAttribute("event",dto);
+
+
+        return "eventId";
     }
 }

@@ -8,16 +8,29 @@
 <div class="col" >
     <h3>Events</h3>
     <table class="eventTable" id="events-table">
+        <th>Name</th>
+        <th>City</th>
+        <th>Date</th>
+        <th>Address</th>
         <tbody>
-        <tr th:each="event: ${events}">
-            <td><input type="hidden" th:value="${event.id}" />            </td>
+        <tr th:each="event: ${events}"  >
+            <td th:text="${event.id}" style="display:none;" />            </td>
             <td class="event-name" th:text="${event.name}" /></td>
             <td class="event-city" th:text="${event.city}" /></td>
-<!--            <td class="event-name" th:text="${event.eventDate}" /></td>-->
+        <td class="event-date" type="date" th:text="${event.eventDate}" /></td>
             <td class="event-address" th:text="${event.address}" /></td>
         </tr>
         </tbody>
     </table>
 </div>
+
+<!--&lt;!&ndash; Bootstrap core JavaScript &ndash;&gt;-->
+<script src="webjars/jquery/3.5.0/jquery.min.js"></script>
+<!--<script src="webjars/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>-->
+
+<!--&lt;!&ndash; Plugin JavaScript &ndash;&gt;-->
+<script src="webjars/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+<script src="js/events.js"></script>
 </body>
 </html>
