@@ -3,13 +3,17 @@ package com.sda.party.controller;
 import com.sda.party.dto.EventDto;
 import com.sda.party.email.SendEmail;
 import com.sda.party.mapper.EventMapper;
+import com.sda.party.model.Comment;
 import com.sda.party.model.Event;
 import com.sda.party.model.User;
 import com.sda.party.repository.EventRepository;
 import com.sda.party.repository.UserRepository;
+import com.sda.party.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,6 +36,10 @@ public class EventController {
 
     @Autowired
     private UserRepository userRepository;
+
+    private Event currentEvent;
+
+    private CommentService commentService;
 
     @RequestMapping("event")
     public String event(Model model) {
@@ -66,7 +74,7 @@ public class EventController {
 
         List<User> list = userRepository.findAll();
         SendEmail sender = new SendEmail();
-        sender.sendEmail(list,newEvent);
+        sender.sendEmail(list, newEvent);
 
         return "redirect:/event";
     }
@@ -78,14 +86,14 @@ public class EventController {
 
         List<EventDto> dtos = EventMapper.mapEntityToDto(events);
 
-        model.addAttribute("events",dtos);
+        model.addAttribute("events", dtos);
 
         return "events";
     }
 
 
     @RequestMapping(value = "/event/{id}", method = RequestMethod.GET)
-    public String showRowFromDBById(@PathVariable("id") int id, Model model){
+    public String showRowFromDBById(@PathVariable("id") int id, Model model) {
 
 
 //        Event event = eventRepository.getById(id);
@@ -96,5 +104,15 @@ public class EventController {
 
 
         return "eventId";
+    }
+
+    @PostMapping("/addcomments")
+    public String addCommentsInEvent(Model model, @ModelAttribute("comment") Comment comment) {
+        model.addAttribute("eventId", currentEvent.getId());
+        comment.setEvent(currentEvent);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        comment.setUser(userRepository.findByLogin(authentication.getName()));
+        commentService.save(comment);
+        return "redirect:/eventId?eventId="+currentEvent.getId();//first eventID html secen variable
     }
 }

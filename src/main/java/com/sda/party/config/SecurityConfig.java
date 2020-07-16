@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/home", "/register", "/login").permitAll()
-                .antMatchers("/event","/event/{id}").authenticated()
+                .antMatchers("/event","/event/{id}/**","/addComment").authenticated()
                 .and().formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/home")
