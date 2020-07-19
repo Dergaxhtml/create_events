@@ -26,6 +26,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -95,12 +96,9 @@ public class EventController {
     @RequestMapping(value = "/event/{id}", method = RequestMethod.GET)
     public String showRowFromDBById(@PathVariable("id") int id, Model model) {
 
-
-//        Event event = eventRepository.getById(id);
-//
-//        EventDto dto = EventMapper.mapEntityToDto(event);
-//
-//        model.addAttribute("event",dto);
+//        Comment comment = new Comment();
+//        model.addAttribute("comment", comment);
+//        model.addAttribute("commentlist", commentService.findBtEventOrderByDate(id) );
 
 
         return "eventId";
@@ -108,11 +106,13 @@ public class EventController {
 
     @PostMapping("/addcomments")
     public String addCommentsInEvent(Model model, @ModelAttribute("comment") Comment comment) {
+        //data musi byc
         model.addAttribute("eventId", currentEvent.getId());
         comment.setEvent(currentEvent);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         comment.setUser(userRepository.findByLogin(authentication.getName()));
         commentService.save(comment);
+        comment.setDate(new Date());
         return "redirect:/eventId?eventId="+currentEvent.getId();//first eventID html secen variable
     }
 }

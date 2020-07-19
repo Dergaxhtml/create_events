@@ -26,7 +26,7 @@
 </table>
 <div class="row">
 
-    <form th:action="@{/addComment}" th:object="${comment}" method="post">
+    <form th:action="@{/addComments}" th:object="${comment}" method="post">
             <textarea rows="8" cols="150" type="text" class="form-control input-lg" placeholder="your commentary"
                       required="true" th:field="${comment.text}"/>
         <button type="submit" class="btn btn-primary">Submit</button>
